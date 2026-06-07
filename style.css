@@ -1,86 +1,203 @@
-/* ==========================
-   V2 BIRTHDAY CARD SCREEN
-========================== */
-
-/* RESET */
+/* ===================================
+   RESET
+=================================== */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
     font-family:'Poppins',sans-serif;
-}
-
-html,
-body{
-    width:100%;
-    height:100%;
-}
-
-body{
-    background:#1a0610;
+    background:#4b001a;
     color:white;
     overflow-x:hidden;
 }
 
-/* SECTIONS */
+/* ===================================
+   COMMON
+=================================== */
 
 section{
     width:100%;
     min-height:100vh;
-
     display:flex;
     justify-content:center;
     align-items:center;
+    padding:20px;
 }
 
-/* PASSWORD */
+button{
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.glow-btn{
+
+    background:#ff4f8b;
+
+    color:white;
+
+    border-radius:999px;
+
+    padding:16px 38px;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:
+    0 0 25px rgba(255,79,139,.35);
+}
+
+.glow-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 0 35px rgba(255,79,139,.6);
+}
+
+/* ===================================
+   PASSWORD SCREEN
+=================================== */
 
 #password-screen{
 
     background:
     linear-gradient(
         135deg,
-        #24010b,
-        #5d0820
+        #430018,
+        #620021,
+        #770027
     );
 }
 
-.password-box{
+.password-container{
 
-    text-align:center;
+    width:100%;
+    max-width:1200px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:70px;
 }
 
-.password-box h1{
+/* LEFT PHOTO */
 
-    margin-bottom:20px;
+.photo-side{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.polaroid{
+
+    width:280px;
+
+    background:white;
+
+    padding:10px;
+
+    border-radius:4px;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.35);
+
+    transform:rotate(-4deg);
+}
+
+.polaroid img{
+
+    width:100%;
+
+    height:340px;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.polaroid p{
+
+    color:#111;
+
+    text-align:center;
+
+    margin-top:10px;
+
+    font-size:.9rem;
+
+    font-weight:500;
+}
+
+/* RIGHT SIDE */
+
+.keypad-side{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.keypad-side h1{
+
+    font-size:3.2rem;
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.keypad-side p{
+
+    opacity:.85;
+
+    margin-bottom:25px;
 }
 
 #password-display{
 
-    width:220px;
+    width:260px;
     height:70px;
 
-    margin:25px auto;
-
-    border-radius:15px;
-
-    background:
-    rgba(255,255,255,.08);
+    border-radius:18px;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
     font-size:2rem;
-    letter-spacing:8px;
+    letter-spacing:10px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    border:
+    1px solid rgba(255,255,255,.12);
+
+    margin-bottom:25px;
 }
 
 .keypad{
 
-    width:260px;
-
-    margin:auto;
+    width:320px;
 
     display:grid;
 
@@ -92,37 +209,64 @@ section{
 
 .keypad button{
 
-    height:60px;
+    height:72px;
 
-    border:none;
+    border-radius:18px;
 
-    border-radius:12px;
-
-    background:#ff4d89;
+    background:#ff4f8b;
 
     color:white;
 
-    font-size:1.1rem;
+    font-size:1.3rem;
 
-    cursor:pointer;
+    font-weight:600;
+
+    transition:.25s;
 }
 
-/* LOADER */
+.keypad button:hover{
+
+    transform:scale(1.05);
+}
+
+#clear-btn{
+    background:#8b234d;
+}
+
+/* ===================================
+   LOADING SCREEN
+=================================== */
 
 #loading-screen{
 
     display:none;
 
-    background:#1d0710;
+    background:
+    linear-gradient(
+        135deg,
+        #330014,
+        #560020
+    );
+}
+
+.loader-wrap{
+
+    text-align:center;
+}
+
+.loader-wrap h1{
+
+    margin-bottom:35px;
+
+    font-size:3rem;
 }
 
 .loader{
 
     width:450px;
-
     max-width:90vw;
 
-    height:18px;
+    height:14px;
 
     background:
     rgba(255,255,255,.12);
@@ -141,78 +285,127 @@ section{
     background:
     linear-gradient(
         90deg,
-        #ff4d89,
-        #ff86b4
+        #ff4f8b,
+        #ff8eb6
     );
 }
 
-#birthday-card-screen{
+/* ===================================
+   DATE SCREEN
+=================================== */
+
+#date-screen{
+
     display:none;
 
-    min-height:100vh;
+    background:
+    linear-gradient(
+        135deg,
+        #4f001c,
+        #77002c
+    );
+}
+
+.date-card{
+
+    padding:60px;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    background:
+    rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid rgba(255,255,255,.15);
+}
+
+.date-card h1{
+
+    font-size:4rem;
+
+    margin-bottom:10px;
+}
+
+.date-card p{
+
+    opacity:.85;
+
+    margin-bottom:30px;
+}
+
+/* ===================================
+   BIRTHDAY CARD SCREEN
+=================================== */
+
+#birthday-card-screen{
+
+    display:none;
 
     background:
     radial-gradient(
         circle at center,
-        #7c0f1f,
-        #4d0613,
-        #240009
+        #7a001f,
+        #510016,
+        #28000a
     );
-
-    justify-content:center;
-    align-items:center;
 }
 
 .birthday-card{
 
     width:650px;
+    max-width:95%;
 
     background:#f5e8d7;
 
-    padding:60px;
+    color:#5b1f1f;
 
-    border-radius:8px;
+    padding:60px 40px;
+
+    border-radius:10px;
 
     text-align:center;
 
     box-shadow:
-    0 25px 60px rgba(0,0,0,.35);
+    0 25px 70px rgba(0,0,0,.35);
 
     transform:rotate(-2deg);
 }
 
 .birthday-card h1{
 
-    color:#5b1f1f;
-
-    font-size:3rem;
+    font-size:3.2rem;
 
     font-family:cursive;
+
+    margin-bottom:10px;
 }
 
 .birthday-card h2{
 
-    color:#5b1f1f;
-
-    margin-top:10px;
-    margin-bottom:40px;
-
     font-weight:500;
+
+    margin-bottom:40px;
 }
 
-/* ==========================
+/* ===================================
    ENVELOPE
-========================== */
+=================================== */
 
 .envelope-wrapper{
 
     position:relative;
 
     width:320px;
-    height:220px;
+    height:230px;
 
-    margin:auto;
+    margin:0 auto 30px;
 }
+
+/* LETTER PAPER */
 
 .letter-paper{
 
@@ -224,18 +417,20 @@ section{
     background:white;
 
     left:50%;
-    top:-20px;
+    top:-15px;
 
     transform:
     translateX(-50%);
 
     border-radius:4px;
 
-    box-shadow:
-    0 8px 20px rgba(0,0,0,.15);
-
     z-index:1;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.15);
 }
+
+/* ENVELOPE BODY */
 
 .envelope{
 
@@ -260,9 +455,9 @@ section{
     width:100%;
     height:100%;
 
-    background:#7e0d1b;
+    background:#7c0f1f;
 
-    border-radius:4px;
+    border-radius:5px;
 
     z-index:2;
 }
@@ -274,13 +469,13 @@ section{
     width:100%;
     height:100%;
 
-    background:#8d1222;
+    background:#99172b;
 
     clip-path:
     polygon(
-      0 0,
-      50% 55%,
-      0 100%
+        0 0,
+        50% 55%,
+        0 100%
     );
 
     z-index:3;
@@ -293,13 +488,13 @@ section{
     width:100%;
     height:100%;
 
-    background:#5f0814;
+    background:#620918;
 
     clip-path:
     polygon(
-      100% 0,
-      50% 55%,
-      100% 100%
+        100% 0,
+        50% 55%,
+        100% 100%
     );
 
     z-index:3;
@@ -312,13 +507,13 @@ section{
     width:100%;
     height:100%;
 
-    background:#a51b2e;
+    background:#b11e35;
 
     clip-path:
     polygon(
-       0 0,
-       50% 60%,
-       100% 0
+        0 0,
+        50% 60%,
+        100% 0
     );
 
     transform-origin:top;
@@ -326,20 +521,22 @@ section{
     z-index:10;
 }
 
+/* GOLD SEAL */
+
 .seal{
 
     position:absolute;
 
-    width:38px;
-    height:38px;
+    width:40px;
+    height:40px;
 
     border-radius:50%;
 
     background:
     radial-gradient(
-      circle,
-      #f3d27b,
-      #b88b2d
+        circle,
+        #f6d886,
+        #bc8e2f
     );
 
     left:50%;
@@ -351,55 +548,22 @@ section{
     z-index:15;
 
     box-shadow:
-    0 0 10px rgba(255,215,0,.4);
+    0 0 12px rgba(255,215,0,.35);
 }
 
-/* ==========================
-   BUTTON
-========================== */
-
-#open-letter-btn{
-
-    margin-top:40px;
-
-    padding:15px 40px;
-
-    border:none;
-
-    border-radius:999px;
-
-    background:#ff4d89;
-
-    color:white;
-
-    font-size:1rem;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-#open-letter-btn:hover{
-
-    transform:
-    translateY(-3px);
-}
-
-/* ==========================
+/* ===================================
    LETTER PAGE
-========================== */
+=================================== */
 
 #letter-section{
 
     display:none;
 
-    min-height:100vh;
-
     background:
     linear-gradient(
         135deg,
-        #29010c,
-        #50051b
+        #2c000f,
+        #5d0822
     );
 
     flex-direction:column;
@@ -408,7 +572,6 @@ section{
 .letter-content{
 
     width:1200px;
-
     max-width:95%;
 
     display:flex;
@@ -416,23 +579,27 @@ section{
     justify-content:space-between;
 
     align-items:center;
+
+    gap:60px;
 }
+
+/* LETTER BOX */
 
 .letter-box{
 
-    width:55%;
+    flex:1;
 
     background:
     rgba(255,255,255,.08);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(15px);
 
-    padding:45px;
+    border:
+    1px solid rgba(255,255,255,.12);
 
     border-radius:25px;
 
-    border:
-    1px solid rgba(255,255,255,.15);
+    padding:40px;
 }
 
 .letter-box h1{
@@ -440,92 +607,112 @@ section{
     margin-bottom:25px;
 }
 
-/* ==========================
+.letter-box p{
+
+    line-height:2;
+
+    font-size:1.05rem;
+}
+
+/* ===================================
    PHOTO STACK
-========================== */
+=================================== */
 
 .photo-stack{
 
     position:relative;
 
-    width:350px;
-    height:450px;
+    width:260px;
+    height:340px;
+
+    flex-shrink:0;
 }
+
+/* CARDS */
 
 .photo-card{
 
     position:absolute;
 
-    width:260px;
+    inset:0;
+
+    overflow:hidden;
+
+    border-radius:18px;
 
     background:white;
 
-    padding:12px;
-
-    border-radius:6px;
+    padding:8px;
 
     box-shadow:
-    0 20px 40px rgba(0,0,0,.25);
+    0 15px 40px rgba(0,0,0,.35);
+
+    transition:.8s;
 }
 
 .photo-card img{
 
     width:100%;
+    height:100%;
 
-    height:300px;
+    object-fit:contain;
 
-    object-fit:cover;
+    border-radius:12px;
+
+    display:block;
 }
 
 .card1{
 
-    right:40px;
-    top:0;
+    transform:
+    rotate(-6deg);
 
-    transform:rotate(-8deg);
+    z-index:2;
 }
 
 .card2{
 
-    left:20px;
-    top:120px;
+    transform:
+    rotate(6deg);
 
-    transform:rotate(10deg);
+    z-index:1;
 }
 
-/* ==========================
-   FIXED CONTINUE BUTTON
-========================== */
+/* ===================================
+   CONTINUE BUTTON
+=================================== */
 
 #next-gallery{
 
-    position:fixed;
+    margin-top:40px;
 
-    bottom:30px;
-    left:50%;
-
-    transform:
-    translateX(-50%);
-
-    z-index:9999;
-
-    padding:16px 50px;
+    padding:16px 45px;
 
     border-radius:999px;
 
-    background:#ff4d89;
+    background:#ff4f8b;
 
     color:white;
 
-    border:none;
+    font-size:1rem;
+
+    font-weight:600;
 
     box-shadow:
-    0 10px 25px rgba(255,77,137,.4);
+    0 0 25px rgba(255,79,139,.4);
 }
 
-/* ==========================
+/* HOVER */
+
+#next-gallery:hover{
+
+    transform:
+    translateY(-3px);
+}
+
+/* ===================================
    GALLERY SECTION
-========================== */
+=================================== */
 
 #gallery-section{
 
@@ -533,23 +720,21 @@ section{
 
     flex-direction:column;
 
-    min-height:100vh;
-
     background:
     linear-gradient(
         135deg,
-        #26000c,
-        #5c0822
+        #2a0010,
+        #5d0822
     );
 
-    padding:100px 50px;
+    padding:80px 20px;
 }
 
 #gallery-section h1{
 
     font-size:3rem;
 
-    margin-bottom:60px;
+    margin-bottom:50px;
 
     text-align:center;
 }
@@ -565,9 +750,7 @@ section{
     grid-template-columns:
     repeat(2,1fr);
 
-    gap:35px;
-
-    margin-bottom:60px;
+    gap:30px;
 }
 
 .gallery-item{
@@ -581,14 +764,14 @@ section{
     padding:10px;
 
     box-shadow:
-    0 20px 40px rgba(0,0,0,.25);
+    0 15px 40px rgba(0,0,0,.25);
 }
 
 .gallery-item img{
 
     width:100%;
 
-    height:380px;
+    height:350px;
 
     object-fit:contain;
 
@@ -599,42 +782,42 @@ section{
 
 .gallery-item:hover img{
 
-    transform:scale(1.06);
+    transform:scale(1.05);
 }
 
 #to-cake{
 
-    padding:18px 50px;
+    margin-top:40px;
+
+    padding:16px 45px;
 
     border-radius:999px;
 
-    background:#ff4d89;
+    background:#ff4f8b;
 
     color:white;
 
     font-size:1rem;
 
-    border:none;
+    font-weight:600;
 
     box-shadow:
-    0 10px 25px rgba(255,77,137,.4);
+    0 0 25px rgba(255,79,139,.4);
 }
 
-/* ==========================
+/* ===================================
    CAKE SECTION
-========================== */
+=================================== */
 
 #cake-section{
 
     display:none;
 
-    min-height:100vh;
-
     background:
     linear-gradient(
         180deg,
-        #28000b,
-        #610b25
+        #2d0010,
+        #670a28
     );
 }
 
@@ -652,45 +835,45 @@ section{
 
     position:relative;
 
-    width:350px;
+    width:320px;
 
-    height:330px;
+    height:320px;
 
     margin:auto;
 }
 
-/* Candle */
+/* CANDLE */
 
 .candle{
 
     position:absolute;
 
-    width:22px;
+    width:20px;
 
     height:100px;
+
+    left:50%;
+
+    top:10px;
+
+    transform:
+    translateX(-50%);
+
+    border-radius:10px;
 
     background:
     repeating-linear-gradient(
         45deg,
         white,
         white 8px,
-        #ff8fb7 8px,
-        #ff8fb7 16px
+        #ff9bc0 8px,
+        #ff9bc0 16px
     );
 
-    left:50%;
-
-    top:20px;
-
-    transform:
-    translateX(-50%);
-
-    z-index:50;
-
-    border-radius:8px;
+    z-index:20;
 }
 
-/* Flame */
+/* FLAME */
 
 #flame{
 
@@ -702,7 +885,7 @@ section{
 
     left:50%;
 
-    top:-38px;
+    top:-35px;
 
     transform:
     translateX(-50%);
@@ -710,9 +893,9 @@ section{
     background:
     radial-gradient(
         circle,
-        #fff6a9,
-        #ffb300,
-        #ff5c00
+        #fff4a8,
+        #ffb400,
+        #ff6500
     );
 
     border-radius:
@@ -720,9 +903,8 @@ section{
     60% 60% 40% 40%;
 
     box-shadow:
-    0 0 20px #ffb300,
-    0 0 40px #ff9100,
-    0 0 60px #ff6a00;
+    0 0 20px orange,
+    0 0 40px gold;
 
     animation:
     flameFlicker .15s infinite;
@@ -739,19 +921,19 @@ section{
     50%{
         transform:
         translateX(-50%)
-        scale(1.15)
+        scale(1.1)
         rotate(2deg);
     }
 
     100%{
         transform:
         translateX(-50%)
-        scale(.92)
+        scale(.95)
         rotate(-2deg);
     }
 }
 
-/* Cake Layers */
+/* CAKE LAYERS */
 
 .cake-layer{
 
@@ -776,7 +958,7 @@ section{
 
     bottom:0;
 
-    background:#ff83b1;
+    background:#ff87b5;
 }
 
 .middle{
@@ -787,7 +969,7 @@ section{
 
     bottom:85px;
 
-    background:#ffb2d0;
+    background:#ffb5d1;
 }
 
 .top{
@@ -798,10 +980,10 @@ section{
 
     bottom:160px;
 
-    background:#ffd5e7;
+    background:#ffd8e7;
 }
 
-/* Icing Drip */
+/* ICING */
 
 .icing{
 
@@ -809,7 +991,7 @@ section{
 
     width:220px;
 
-    height:35px;
+    height:30px;
 
     left:50%;
 
@@ -835,13 +1017,14 @@ section{
 
     height:35px;
 
-    background:white;
-
     left:25px;
 
-    top:15px;
+    top:12px;
 
-    border-radius:0 0 15px 15px;
+    background:white;
+
+    border-radius:
+    0 0 15px 15px;
 }
 
 .icing::after{
@@ -854,50 +1037,44 @@ section{
 
     height:45px;
 
-    background:white;
-
     right:35px;
 
-    top:12px;
+    top:10px;
 
-    border-radius:0 0 15px 15px;
+    background:white;
+
+    border-radius:
+    0 0 15px 15px;
 }
-
-/* Blow Button */
 
 #blow-btn{
 
     margin-top:40px;
 
-    padding:18px 50px;
+    padding:16px 45px;
 
     border-radius:999px;
 
-    background:#ff4d89;
+    background:#ff4f8b;
 
     color:white;
 
-    border:none;
-
-    box-shadow:
-    0 10px 25px rgba(255,77,137,.4);
+    font-weight:600;
 }
 
-/* ==========================
-   FINAL SECTION
-========================== */
+/* ===================================
+   FINAL SCREEN
+=================================== */
 
 #final-section{
 
     display:none;
 
-    min-height:100vh;
-
     background:
     radial-gradient(
         circle,
-        #690d2b,
-        #2c000f
+        #770028,
+        #2b000f
     );
 }
 
@@ -910,7 +1087,7 @@ section{
 
     font-size:4rem;
 
-    margin-bottom:20px;
+    margin-bottom:15px;
 }
 
 .final-box h2{
@@ -930,117 +1107,380 @@ section{
 
     border:8px solid white;
 
-    box-shadow:
-    0 0 40px rgba(255,255,255,.25);
+    margin-bottom:30px;
 
-    margin-bottom:35px;
+    box-shadow:
+    0 0 35px rgba(255,255,255,.25);
 }
 
 #celebrate-btn{
 
-    padding:18px 55px;
+    padding:16px 50px;
 
     border-radius:999px;
 
-    border:none;
-
-    background:#ff4d89;
+    background:#ff4f8b;
 
     color:white;
 
-    font-size:1rem;
-
-    box-shadow:
-    0 10px 25px rgba(255,77,137,.4);
+    font-weight:600;
 }
 
-/* ==========================
-   RESPONSIVE
-========================== */
+/* ===================================
+   MOBILE RESPONSIVE
+=================================== */
 
-@media(max-width:900px){
+@media(max-width:768px){
+
+    /* PASSWORD */
+
+   .password-container{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    gap:10px;
+
+    padding:20px 0;
+}
+
+   .polaroid{
+
+    width:150px;
+
+    padding:6px;
+}
+
+.polaroid img{
+
+    height:180px;
+}
+
+.polaroid p{
+
+    font-size:.7rem;
+
+    margin-top:3px;
+}
+
+    .keypad-side h1{
+
+        font-size:1.8rem;
+
+        text-align:center;
+    }
+
+    .keypad-side h1{
+    white-space:nowrap;
+    font-size:1.9rem;
+    }
+
+    #password-display{
+
+        width:200px;
+
+        height:55px;
+
+        font-size:1.5rem;
+    }
+
+    .keypad{
+
+    width:210px;
+
+    gap:8px;
+}
+
+.keypad button{
+
+    height:48px;
+
+    font-size:1.1rem;
+}
+
+    /* DATE */
+
+    .date-card{
+
+        width:95%;
+
+        padding:35px;
+    }
+
+    .date-card h1{
+
+        font-size:2.5rem;
+    }
+
+    /* ENVELOPE */
+
+    .birthday-card{
+
+        padding:30px 20px;
+    }
+
+    .birthday-card h1{
+
+        font-size:2rem;
+    }
+
+    .envelope-wrapper{
+
+        transform:scale(.8);
+    }
+
+    /* LETTER */
 
     .letter-content{
 
         flex-direction:column;
 
-        gap:50px;
+        gap:25px;
     }
 
     .letter-box{
 
         width:100%;
+
+        padding:25px;
     }
+
+    .letter-box h1{
+
+        font-size:2rem;
+    }
+
+    .photo-stack{
+
+        width:200px;
+
+        height:260px;
+    }
+
+    /* GALLERY */
 
     .gallery-grid{
 
         grid-template-columns:1fr;
     }
 
-    .birthday-card{
+    .gallery-item img{
 
-        width:95%;
-        padding:35px;
+        height:250px;
     }
 
-    .envelope{
+    /* CAKE */
 
-        transform:
-        translateX(-50%)
-        scale(.8);
+    .cake{
+
+        transform:scale(.8);
+    }
+
+    /* FINAL */
+
+    .final-box h1{
+
+        font-size:2.3rem;
+    }
+
+    .final-box img{
+
+        width:200px;
+        height:200px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .cake{
+
+        transform:scale(.7);
     }
 
     .photo-stack{
 
-        width:100%;
-        height:500px;
+        width:180px;
+        height:230px;
     }
 
-    .final-box h1{
+    .date-card h1{
 
-        font-size:2.5rem;
+        font-size:2rem;
     }
+
 }
 
-.password-container{
-    width:1200px;
-    max-width:95%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.card1{
+    opacity:1;
 }
 
-.left-photo{
-    flex:1;
-    display:flex;
-    justify-content:center;
+.card2{
+    opacity:0;
 }
 
-.right-passcode{
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+#date-continue{
+
+    background:#ff4f8b;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 35px;
+
+    border-radius:999px;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 0 20px rgba(255,79,139,.4);
+
+    transition:.3s;
 }
 
-.polaroid{
-    width:320px;
-    background:white;
-    padding:15px;
-    box-shadow:0 20px 40px rgba(0,0,0,.3);
-    transform:rotate(-5deg);
+#date-continue:hover{
+
+    transform:translateY(-3px);
 }
 
-.polaroid img{
+#open-letter-btn{
+
+    margin-top:25px;
+
+    background:#ff4f8b;
+
+    color:white;
+
+    border:none;
+
+    padding:16px 40px;
+
+    border-radius:999px;
+
+    font-weight:600;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 0 25px rgba(255,79,139,.4);
+}
+
+.envelope-wrapper{
+
     width:100%;
-    height:380px;
-    object-fit:cover;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
 }
 
-.polaroid p{
-    color:black;
-    text-align:center;
-    margin-top:15px;
-    font-family:cursive;
+.birthday-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
 }
 
+@media(max-width:768px){
+
+    .password-container{
+
+        gap:8px;
+    }
+
+    .polaroid{
+
+        width:145px;
+    }
+
+    .polaroid img{
+
+        height:170px;
+    }
+
+    .keypad-side h1{
+
+        font-size:2rem;
+
+        margin-bottom:5px;
+    }
+
+    .keypad-side p{
+
+        margin-bottom:10px;
+    }
+
+    #password-display{
+
+        width:190px;
+
+        height:50px;
+
+        margin-bottom:12px;
+    }
+
+    .keypad{
+
+        width:200px;
+
+        gap:8px;
+    }
+
+    .keypad button{
+
+        height:46px;
+
+        border-radius:14px;
+    }
+
+}
+
+.keypad-side{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+}
+
+.keypad{
+
+    width:250px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+    margin:0 auto;
+}
+
+#password-display{
+
+    margin-left:auto;
+    margin-right:auto;
+}
