@@ -63,6 +63,12 @@ let enteredPassword = "";
 
 const CORRECT_PASSWORD = "2009";
 
+const dateScreen =
+document.getElementById("date-screen");
+
+const dateContinue =
+document.getElementById("date-continue");
+
 
 // ==========================
 // PASSWORD INPUT
@@ -173,11 +179,8 @@ function startLoading(){
 
             onComplete:()=>{
 
-                loadingScreen.style.display =
-                "none";
-
-                birthdayCardScreen.style.display =
-                "flex";
+               loadingScreen.style.display = "none";
+                dateScreen.style.display = "flex";
 
                 showCard();
 
@@ -555,5 +558,39 @@ document.addEventListener(
         submitBtn.click();
 
     }
+
+});
+
+const cards = document.querySelectorAll(".photo-card");
+
+let current = 0;
+
+setInterval(()=>{
+
+    gsap.to(cards[current],{
+        opacity:0,
+        duration:.8
+    });
+
+    current = (current + 1) % cards.length;
+
+    gsap.to(cards[current],{
+        opacity:1,
+        duration:.8
+    });
+
+},3000);
+
+dateContinue.addEventListener("click",()=>{
+
+    dateScreen.style.display="none";
+
+    birthdayCardScreen.style.display="flex";
+
+    gsap.from(".birthday-card",{
+        scale:.8,
+        opacity:0,
+        duration:1
+    });
 
 });
